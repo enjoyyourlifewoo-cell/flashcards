@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flashcard Materi</title>
+</head>
+<body>
+  <h1>🎴 Flashcard Pembelajaran</h1>
+  <div id="flashcard"></div>
+
+  <script>
+  fetch('https://raw.githubusercontent.com/edubysma-web/materi/main/materi.json')
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById('flashcard');
+      data.forEach(m => {
+        const card = document.createElement('div');
+        card.style.border = '1px solid #ccc';
+        card.style.padding = '10px';
+        card.style.margin = '10px';
+        card.style.width = '200px';
+        card.innerHTML = `<h3>${m.judul}</h3><p>${m.isi}</p>`;
+        container.appendChild(card);
+      });
+    });
+  </script>
+</body>
+</html>
